@@ -1,26 +1,23 @@
-# Unified Device Tree for Asus Zenfone 2 Laser (720p)
+# Unified Device Tree for Asus Zenfone Max
 
 ## Spec Sheet
 
-| Feature                 | Specification                                      |
-| :---------------------- | :------------------------------------------------- |
-| CPU                     | Quad-core 1.2 GHz Cortex-A53                       |
-| Chipset                 | Qualcomm MSM8916 Snapdragon 410                    |
-| GPU                     | Adreno 306                                         |
-| Memory                  | 2GB                                                |
-| Shipped Android Version | 5.0.2                                              |
-| Latest Android Version  | 6.0.1                                              |
-| Kernel Version          | 3.10                                               |
-| Storage                 | 8/16 GB                                            |
-| MicroSD                 | Up to 256 GB                                       |
-| Battery                 | Li-Po 2400 mAh (removable)                         |
-| Display                 | 720 x 1280 pixels, 5.0 (~294 PPI)                  |
-| Rear Camera             | 13 MP, laser autofocus, dual-LED (dual tone) flash |
-| Front Camera            | 5 MP                                               |
-| Release Date            | August 2015                                        |
+| Feature                 | Specification                                               |
+| :---------------------- | :-------------------------------------------------          |
+| CPU                     | Quad-core 1.2 GHz Cortex-A53                                |
+| Chipset                 | Qualcomm MSM8916 Snapdragon 410/MSM8939v2/v3 Snapdragon 615 |
+| GPU                     | Adreno 306                                                  |
+| Memory                  | 2GB/3GB                                                     |
+| Shipped Android Version | 5.0.2                                                       |
+| Latest Android Version  | 6.0.1                                                       |
+| Kernel Version          | 3.10.y                                                      |
+| Storage                 | 16/32 GB                                                    |
+| MicroSD                 | Up to 256 GB                                                |
+| Battery                 | Li-Po 5000 mAh (removable)                                  |
+| Display                 | 720 x 1280 pixels, 5.0 (~294 PPI)                           |
+| Rear Camera             | 13 MP, laser autofocus, dual-LED (dual tone) flash          |
+| Front Camera            | 5 MP                                                        |
+| Release Date            | August 2015                                                 |
 
-## Device Picture
 
-![Asus Zenfone 2 Laser (720p)](https://cdn2.gsmarena.com/vv/pics/asus/zenfone-2-laser-ze500-1.jpg "Asus Zenfone 2 Laser (720p)")
-
-Copyright (C) 2019 - Roker2
+Copyright (C) 2019 - YaAlex

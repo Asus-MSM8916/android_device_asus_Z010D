@@ -1,3 +1,3 @@
-add_lunch_combo lineage_Z00ED-userdebug
-add_lunch_combo lineage_Z00ED-user
-add_lunch_combo lineage_Z00ED-eng
+add_lunch_combo lineage_Z010D-userdebug
+add_lunch_combo lineage_Z010D-user
+add_lunch_combo lineage_Z010D-eng

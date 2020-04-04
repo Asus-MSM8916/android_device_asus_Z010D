@@ -16,16 +16,16 @@
 # inherit from common msm8916-common
 -include device/asus/msm8916-common/BoardConfigCommon.mk
 
-DEVICE_PATH := device/asus/Z00ED
+DEVICE_PATH := device/asus/Z010D
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := Z00ED,Z00E,Z00E_2,ASUS_Z00ED,ASUS_Z00E_2
+TARGET_OTA_ASSERT_DEVICE := Z010D,Z010DD,Z010_2,ASUS_Z010D,ASUS_Z010_2,ASUS_Z010DD
 
 # Board
 TARGET_BOARD_INFO_FILE := $(DEVICE_PATH)/board-info.txt
 
 # Kernel
-TARGET_KERNEL_CONFIG := ze500kl-custom_defconfig
+TARGET_KERNEL_CONFIG := zc550kl-custom_defconfig
 
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop

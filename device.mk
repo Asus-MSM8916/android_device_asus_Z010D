@@ -14,31 +14,39 @@
 # limitations under the License.
 #
 
+# Inherit from msm8916-common
+$(call inherit-product, device/asus/msm8916-common/msm8916.mk)
+
 # call the proprietary setup
-$(call inherit-product-if-exists, vendor/asus/Z00xD/Z00xD-vendor.mk)
+$(call inherit-product-if-exists, vendor/asus/Z010D/Z010D-vendor.mk)
+$(call inherit-product-if-exists, vendor/asus/Z010DD/Z010DD-vendor.mk)
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
-# Overlay
-DEVICE_PACKAGE_OVERLAYS += device/asus/Z00ED/overlay
-
-# Screen density
-PRODUCT_AAPT_CONFIG := normal
-PRODUCT_AAPT_PREF_CONFIG := xhdpi
+# Audio
+PRODUCT_COPY_FILES += \
+    device/asus/Z010D/audio/mixer_paths_mtp.xml:system/vendor/etc/mixer_paths_mtp.xml
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
 
-# Inherit from msm8916-common
-$(call inherit-product, device/asus/msm8916-common/msm8916.mk)
+# Overlay
+DEVICE_PACKAGE_OVERLAYS += device/asus/Z010D/overlay
 
+# Rootdir
 PRODUCT_PACKAGES += \
     init.target.rc
 
-PRODUCT_COPY_FILES += \
-    device/asus/Z00ED/audio/mixer_paths_mtp.xml:system/vendor/etc/mixer_paths_mtp.xml
+# Screen density
+PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
-# Lights
+# Include Bootanimation configuration
+TARGET_BOOT_ANIMATION_RES := 720
+
+# Light
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.asus_8953
+    android.hardware.light@2.0-impl \
+    android.hardware.light@2.0-service \
+    lights.msm8916

@@ -15,7 +15,7 @@
 #
 
 # Inherit from Z00ED device
-$(call inherit-product, device/asus/Z00ED/device.mk)
+$(call inherit-product, device/asus/Z010D/device.mk)
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
@@ -25,17 +25,17 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # Device identifier. This must come after all inclusions
-PRODUCT_NAME := lineage_Z00ED
-PRODUCT_DEVICE := Z00ED
+PRODUCT_NAME := lineage_Z010D
+PRODUCT_DEVICE := Z010D
 PRODUCT_BRAND := asus
-PRODUCT_MODEL := Zenfone 2 Laser
+PRODUCT_MODEL := Zenfone Max
 PRODUCT_MANUFACTURER := asus
 
 PRODUCT_GMS_CLIENTID_BASE := android-asus
 
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRIVATE_BUILD_DESC="WW_Phone-user 6.0.1 MMB29P 13.1010.1612.53-20170202 release-keys" \
-    TARGET_DEVICE="ZE500KL"
+# Properties
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.fusion.magfield.max=250
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := "asus/WW_Phone/ASUS_Z00E_2:6.0.1/MMB29P/13.1010.1612.53-20170202:user/release-keys"
+BUILD_FINGERPRINT := asus/WW_Phone/ASUS_Z010_2:6.0.1/MMB29P/13.8.26.80-20161230:user/release-keys

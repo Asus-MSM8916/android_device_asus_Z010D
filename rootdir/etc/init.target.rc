@@ -1,44 +1,19 @@
-# Copyright (c) 2009-2012, 2014-2015, The Linux Foundation. All rights reserved.
-#
-# Redistribution and use in source and binary forms, with or without
-# modification, are permitted provided that the following conditions are met:
-#     * Redistributions of source code must retain the above copyright
-#       notice, this list of conditions and the following disclaimer.
-#     * Redistributions in binary form must reproduce the above copyright
-#       notice, this list of conditions and the following disclaimer in the
-#       documentation and/or other materials provided with the distribution.
-#     * Neither the name of The Linux Foundation nor
-#       the names of its contributors may be used to endorse or promote
-#       products derived from this software without specific prior written
-#       permission.
-#
-# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-# IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NON-INFRINGEMENT ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
-# CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-# EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
-# OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
-# OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
-# ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-#
+on fs
 
-on boot
-
-#ASUS_BSP +++ "Light/Proximity sensor"
-chown system shell /sys/devices/virtual/sensors/psensor/switch
-chown system shell /sys/devices/virtual/sensors/lsensor/switch
-chown system shell /sys/devices/virtual/sensors/psensor/hi_cal
-chown system shell /sys/devices/virtual/sensors/psensor/low_cal
-chown system shell /sys/devices/virtual/sensors/psensor/proxm
-chown system shell /sys/devices/virtual/sensors/lsensor/200lux_cal
-chown system shell /sys/devices/virtual/sensors/lsensor/1000lux_cal
-chown system shell /sys/devices/virtual/sensors/lsensor/adc
-#ASUS_BSP ---
+on post-fs
 
 on post-fs-data
+
+#ASUS_BSP Jeff_Gu : add for Led blink time +++
+    chown system system /sys/class/leds/red/on_ms
+    chmod 0664 /sys/class/leds/red/on_ms
+    chown system system /sys/class/leds/green/on_ms
+    chmod 0664 /sys/class/leds/green/on_ms
+    chown system system /sys/class/leds/red/off_ms
+    chmod 0664 /sys/class/leds/red/off_ms
+    chown system system /sys/class/leds/green/off_ms
+    chmod 0664 /sys/class/leds/green/off_ms
+#ASUS_BSP Jeff_Gu : add for Led blink time ---
 
 #ASUS_BSP +++ Stimber_Hsueh "implement camera interface for ATD"
 	rm /data/data/camera_status
@@ -70,65 +45,50 @@ on post-fs-data
 #ASUS_BSP --- PJ "implement CalibrationBackup interface for ATD&DIT"
 
 #ASUS_BSP +++ srhuang "Hall Sensor"
-	symlink /sys/class/sensors/hallsensor/status	/data/data/hallsensor_status
-	symlink /sys/class/sensors/hallsensor/debounce 	/data/data/hallsensor_debounce
+	symlink /sys/bus/platform/devices/soc.0/hall_sensor/hall_sensor/status	/data/data/hallsensor_status
+	symlink /sys/bus/platform/devices/soc.0/hall_sensor/hall_sensor/debounce	/data/data/hallsensor_debounce
 	chmod 0600 /data/data/hallsensor_status
 	chmod 0600 /data/data/hallsensor_debounce
 #ASUS_BSP --- srhuang "Hall Sensor"
 
-#ASUS_BSP +++ srhuang "Zen Motion"
-	chown system shell /sys/bus/i2c/devices/0-001f/double_tap
-	chown system shell /sys/bus/i2c/devices/0-001f/flip
-	chown system shell /sys/bus/i2c/devices/0-001f/flick
-	chown system shell /sys/bus/i2c/devices/0-001f/hands
-	chown system shell /sys/bus/i2c/devices/0-001f/moving
-#ASUS_BSP --- srhuang "Zen Motion"
+#ASUS_BSP +++ Surya_Xu "CSC Laser"
+	chown media sdcard_rw /proc/driver/LaserFocus_on
+	chown media sdcard_rw /proc/driver/LaserFocus_value
+	chown system sdcard_rw /proc/driver/LaserFocus_Status
+	chown media sdcard_rw /proc/driver/LaserFocus_Status_For_Camera
+	chown system sdcard_rw /proc/driver/LaserFocus_CalStart
+	chown system sdcard_rw /proc/driver/LaserFocus_enforce
+	chown system sdcard_rw /proc/driver/LaserFocus_value_more_info
+	chown system sdcard_rw /proc/driver/LaserFocus_debug_dump
+	chown system sdcard_rw /proc/driver/LaserFocus_I2c_Status
 
-# ASUS_BSP +++ LaserFocus "Camera LaserFocus sensor VL6180"
-  chown media sdcard_rw /proc/driver/LaserFocus_on
-  chown media sdcard_rw /proc/driver/LaserFocus_value
-  chown system sdcard_rw /proc/driver/LaserFocus_value_more_info
-  chown system sdcard_rw /proc/driver/LaserFocus_Status
-  chown media sdcard_rw /proc/driver/LaserFocus_Status_For_Camera
-  chown system sdcard_rw /proc/driver/LaserFocus_CalStart
-  chown system sdcard_rw /proc/driver/LaserFocus_enforce
-  chown system sdcard_rw /proc/driver/LaserFocus_debug_dump
-  chown system sdcard_rw /proc/driver/LaserFocus_CalGetInputData
-  chown media sdcard_rw /factory/laura_cal_data.txt
+	rm /data/data/LaserFocus_on
+	rm /data/data/LaserFocus_value
+	rm /data/data/LaserFocus_value_more_info
+	rm /data/data/LaserFocus_Status
+	rm /data/data/LaserFocus_CalStart
+	rm /data/data/LaserFocus_disable
+	rm /data/data/LaserFocus_debug_dump
+	rm /data/data/LaserFocus_I2c_Status
 
-  rm /data/data/LaserFocus_on
-  rm /data/data/LaserFocus_value
-  rm /data/data/LaserFocus_value_more_info
-  rm /data/data/LaserFocus_Status
-  rm /data/data/LaserFocus_CalStart
-  rm /data/data/LaserFocus_disable
-  rm /data/data/LaserFocus_debug_dump
-
-  symlink /system/bin/LaserFocus_on /data/data/LaserFocus_on
-  symlink /proc/driver/LaserFocus_value /data/data/LaserFocus_value
-  symlink /proc/driver/LaserFocus_value_more_info /data/data/LaserFocus_value_more_info
-  symlink /proc/driver/LaserFocus_Status /data/data/LaserFocus_Status
-  symlink /system/bin/LaserFocus_CalStart /data/data/LaserFocus_CalStart
-  symlink /system/bin/LaserFocus_enforce /data/data/LaserFocus_disable
-  symlink /proc/driver/LaserFocus_debug_dump /data/data/LaserFocus_debug_dump
-# ASUS_BSP ---
+	symlink /system/bin/LaserFocus_on /data/data/LaserFocus_on
+	symlink /proc/driver/LaserFocus_value /data/data/LaserFocus_value
+	symlink /proc/driver/LaserFocus_value_more_info /data/data/LaserFocus_value_more_info
+	symlink /proc/driver/LaserFocus_Status /data/data/LaserFocus_Status
+	symlink /system/bin/LaserFocus_CalStart /data/data/LaserFocus_CalStart
+	symlink /system/bin/LaserFocus_enforce /data/data/LaserFocus_disable
+	symlink /proc/driver/LaserFocus_debug_dump /data/data/LaserFocus_debug_dump
+	symlink /proc/driver/LaserFocus_I2c_Status /data/data/LaserFocus_I2c_Status
+#ASUS_BSP --- Surya_Xu "CSC Laser"
 
 # ASUS_BSP +++ Peter_Lu "Akm09911 compass sensor & KX022 Gsensor"
-	# Permissions for Sensors
+    #  Permissions for Sensors
     # accelerometer kx022
-	  chown system system /sys/bus/i2c/devices/0-001f/enable
+    chown system system /sys/bus/i2c/devices/0-001f/enable
     chown system system /sys/bus/i2c/devices/0-001f/delay
-    chown system shell /sys/bus/i2c/devices/0-001f/ZenMotion_double_tap
-    chown system shell /sys/bus/i2c/devices/0-001f/ZenMotion_flip
-    chown system shell /sys/bus/i2c/devices/0-001f/ZenMotion_flick
-    chown system shell /sys/bus/i2c/devices/0-001f/ZenMotion_set_flush
 
     chmod 0660 /sys/bus/i2c/devices/0-001f/enable
     chmod 0660 /sys/bus/i2c/devices/0-001f/delay
-    chmod 0660 /sys/bus/i2c/devices/0-001f/ZenMotion_double_tap
-    chmod 0660 /sys/bus/i2c/devices/0-001f/ZenMotion_flip
-    chmod 0660 /sys/bus/i2c/devices/0-001f/ZenMotion_flick
-    chmod 0660 /sys/bus/i2c/devices/0-001f/ZenMotion_set_flush
 
     # AKM E-compass
     chown system system /sys/class/compass/akm09911/enable_acc
@@ -154,12 +114,3 @@ on post-fs-data
     chmod 0774 /sys/bus/i2c/devices/0-000f/Gsensor_raw
     chmod 0774 /sys/bus/i2c/devices/0-000f/Gsensor_status
 
-    # adding Ecompass service
-service akmd  /system/bin/akmd09911 -m 4
-    class core
-    user root
-    group root system misc input
-    seclabel u:r:system_app:s0
-    oneshot
-
-# ASUS_BSP --- Peter_Lu "Akm09911 compass sensor & KX022 Gsensor"
