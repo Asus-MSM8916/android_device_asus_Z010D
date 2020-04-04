@@ -19,7 +19,6 @@ $(call inherit-product, device/asus/msm8916-common/msm8916.mk)
 
 # call the proprietary setup
 $(call inherit-product-if-exists, vendor/asus/Z010D/Z010D-vendor.mk)
-$(call inherit-product-if-exists, vendor/asus/Z010DD/Z010DD-vendor.mk)
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
