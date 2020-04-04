@@ -22,6 +22,9 @@ $(call inherit-product-if-exists, vendor/asus/Z010D/Z010D-vendor.mk)
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
+# Unify
+include device/asus/Z010D/releasetools/unify.mk
+
 # Audio
 PRODUCT_COPY_FILES += \
     device/asus/Z010D/audio/mixer_paths_mtp.xml:system/vendor/etc/mixer_paths_mtp.xml

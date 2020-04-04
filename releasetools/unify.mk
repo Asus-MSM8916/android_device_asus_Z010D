@@ -1,4 +1,4 @@
-UNIFY_PATH := device/asus/msm8916-common/releasetools
+UNIFY_PATH := device/asus/Z010D/releasetools
 
 
 PRODUCT_COPY_FILES += \
