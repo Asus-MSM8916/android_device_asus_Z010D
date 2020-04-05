@@ -144,9 +144,6 @@ void vendor_load_properties()
     /* Device Setting */
     family = "WW_Phone";
     device = "Z010D";
-	
-    // Init a dummy BT MAC address, will be overwritten later
-    property_set("ro.boot.btmacaddr", "00:00:00:00:00:00");
 
     sprintf(p_device, "ASUS_%s", device);
 
@@ -198,4 +195,6 @@ void vendor_load_properties()
     else {
         property_set("ro.product.model", "Zenfone"); // this should never happen.
     }
+    // Init a dummy BT MAC address, will be overwritten later
+    property_set("ro.boot.btmacaddr", "00:00:00:00:00:00");
 }
