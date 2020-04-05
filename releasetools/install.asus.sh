@@ -19,14 +19,10 @@ fi
 if [ -f "$cpu_id_file" ]; then
     case "$cpu_id" in
         "239" | "241" | "263" | "268" | "269" | "270" | "271")
-            rm -rf /system/etc/firmware
-            cp -rf /tmp/install/Z010DD/system/* /system/
-            mv /system/lib/hw/power.msm8939.so /system/lib/hw/power.msm8916.so
-            mv /system/lib64/hw/power.msm8939.so /system/lib64/hw/power.msm8916.so
+            rm -rf /system/system/etc/firmware
+            cp -rf /tmp/install/Z010DD/system/* /system/system/
             ;;
         *)
-            rm -f /system/lib64/hw/power.msm8939.so
-            rm -f /system/lib/hw/power.msm8939.so
             ;;
     esac
 fi
